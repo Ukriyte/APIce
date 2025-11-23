@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postman JS</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    </head>
+
+  <body class="bg-gray-100 min-h-screen p-4 font-sans">
+    <div id="app"></div>
+
+    <script type="module" src="/src/main.js"></script>
+
+    <h1 class="text-3xl font-bold text-indigo-600 mb-6 border-b pb-2">
+      APIce
+    </h1>
+
+    <form data-form class="space-y-6">
+      
+      <div class="flex space-x-2 bg-white p-3 rounded-lg shadow-md border border-gray-200">
+        
+        <select 
+          data-method
+          class="p-2 border border-gray-300 rounded-lg font-bold text-sm bg-indigo-50 text-indigo-700 focus:ring-2 focus:ring-indigo-500 transition duration-150"
+        >
+          <option class="bg-green-100 text-green-700">GET</option>
+          <option class="bg-blue-100 text-blue-700">PUT</option>
+          <option class="bg-yellow-100 text-yellow-700">POST</option>
+          <option class="bg-red-100 text-red-700">DELETE</option>
+        </select>
+
+        <input 
+          data-url 
+          placeholder="https://api.example.com" 
+          type="text"
+          class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
+        />
+
+        <button 
+          type="submit" 
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-150"
+        >
+          Send
+        </button>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="section bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2 text-gray-700 border-b pb-1">Query Params</h3>
+          <div data-query-params class="space-y-1 mb-3"></div>
+          <button 
+            type="button" 
+            data-add-query-param-btn
+            class="text-indigo-600 hover:text-indigo-800 text-sm font-medium transition duration-150 flex items-center mt-2"
+          >
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Add Query Param
+          </button>
+        </div>
+
+        <div class="section bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <h3 class="text-lg font-semibold mb-2 text-gray-700 border-b pb-1">Request Headers</h3>
+          <div data-request-headers class="space-y-1 mb-3"></div>
+          <button 
+            type="button" 
+            data-add-request-header-btn
+            class="text-indigo-600 hover:text-indigo-800 text-sm font-medium transition duration-150 flex items-center mt-2"
+          >
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Add Header
+          </button>
+        </div>
+
+        <div class="section bg-white p-4 rounded-lg shadow-md border border-gray-200 lg:col-span-1">
+          <h3 class="text-lg font-semibold mb-2 text-gray-700 border-b pb-1">JSON Body</h3>
+          <textarea 
+            data-json-body 
+            placeholder='{"hello":"world"}'
+            class="w-full h-32 p-3 border border-gray-300 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+          ></textarea>
+        </div>
+      </div>
+    </form>
+
+    <hr class="my-6 border-gray-300" />
+
+    <section data-response-section class="d-none space-y-4 bg-white p-6 rounded-lg shadow-xl">
+      <h2 class="text-2xl font-bold text-gray-800">Response</h2>
+      
+      <div class="flex items-center space-x-4 pb-2 border-b border-gray-200">
+        <span class="text-lg font-semibold text-gray-700">Status:</span> 
+        <span 
+          data-status 
+          class="px-4 py-1 text-sm font-bold rounded-full bg-gray-500 text-white"
+        >
+          </span>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Body</h3>
+        <pre 
+          data-response-body
+          class="bg-gray-800 text-green-300 p-4 rounded-lg overflow-auto max-h-64 font-mono text-sm shadow-inner"
+        >
+          {
+  "message": "Response will appear here..."
+          }
+        </pre>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Headers</h3>
+        <div data-response-headers class="grid grid-cols-2 gap-x-4 gap-y-1 p-3 bg-gray-50 rounded-lg text-sm font-mono border border-gray-200">
+          </div>
+      </div>
+    </section>
+
+    <template data-key-value-template>
+      <div 
+        data-key-value-pair 
+        class="flex gap-2 items-center"
+      >
+        <input 
+          data-key 
+          placeholder="Key" 
+          class="w-1/2 p-1 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        <input 
+          data-value 
+          placeholder="Value" 
+          class="w-1/2 p-1 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        <button 
+          data-remove-btn 
+          type="button"
+          class="text-red-500 hover:text-red-700 font-bold p-1 transition duration-150"
+        >
+          &times;
+        </button>
+      </div>
+    </template>
+  </body>
+</html>
